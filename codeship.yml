@@ -1,0 +1,8 @@
+install:
+  - pip install flake8
+before_script:
+  - touch codeship-yaml-was-here
+script:
+  - flake8
+after_success:
+  - echo "Now we can deploy"
