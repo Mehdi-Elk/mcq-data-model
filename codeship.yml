@@ -1,3 +1,5 @@
 language: java
 jdk: oraclejdk8
-script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8 sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_TOKEN
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_TOKEN
+  - jdk_switcher use oraclejdk8
