@@ -2,5 +2,4 @@ language: java
 sudo: required
 jdk:
   - oraclejdk8
-install: true
 script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_TOKEN
