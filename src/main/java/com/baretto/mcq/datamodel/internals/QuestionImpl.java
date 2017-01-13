@@ -19,6 +19,12 @@ public final class QuestionImpl implements Question, Serializable {
     private final Set<Choice> choices = new HashSet();
     private AnswerConstraint answerConstraint;
 
+    /**
+     * Instanciate a MCQ Question.
+     * @param aLabel
+     * @param theChoices
+     * @param anAnswerConstraint
+     */
      public QuestionImpl(String aLabel, Set<Choice> theChoices, AnswerConstraint anAnswerConstraint){
         label = aLabel;
         choices.addAll(theChoices);
