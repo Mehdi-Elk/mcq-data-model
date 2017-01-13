@@ -13,11 +13,6 @@ public final class ChoiceImpl implements Choice, Serializable {
     private final String label;
     private final boolean isValid;
 
-    /**
-     * Instanciate a choice with the given label and specify if it's a valid choice for the MCQ question.
-     * @param aLabel label of the choice.
-     * @param isValid Indicate if the choice is valid for a question.
-     */
     public ChoiceImpl(String aLabel, boolean isValid) {
         this.label = aLabel;
         this.isValid = isValid;
