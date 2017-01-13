@@ -19,7 +19,7 @@ public final class QuestionImpl implements Question, Serializable {
     private final Set<Choice> choices = new HashSet();
     private AnswerConstraint answerConstraint;
 
-     QuestionImpl(String aLabel, Set<Choice> theChoices, AnswerConstraint anAnswerConstraint){
+     public QuestionImpl(String aLabel, Set<Choice> theChoices, AnswerConstraint anAnswerConstraint){
         label = aLabel;
         choices.addAll(theChoices);
         answerConstraint = anAnswerConstraint;
