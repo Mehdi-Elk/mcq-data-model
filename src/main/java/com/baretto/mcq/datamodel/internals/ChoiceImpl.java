@@ -13,7 +13,7 @@ public final class ChoiceImpl implements Choice, Serializable {
     private final String label;
     private final boolean isValid;
 
-    ChoiceImpl(String aLabel, boolean isValid) {
+    public ChoiceImpl(String aLabel, boolean isValid) {
         this.label = aLabel;
         this.isValid = isValid;
     }
