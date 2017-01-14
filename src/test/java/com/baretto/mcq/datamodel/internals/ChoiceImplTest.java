@@ -11,7 +11,7 @@ public class ChoiceImplTest {
 
 
     @Test
-    public void tesShouldBeEquals() {
+    public void testShouldBeEquals() {
         Choice firstChoice = new ChoiceImpl("aLabel", true);
         Choice secondChoice = new ChoiceImpl("aLabel", true);
 
@@ -23,7 +23,7 @@ public class ChoiceImplTest {
     }
 
     @Test
-    public void tesShouldBeNotEquals() {
+    public void testShouldBeNotEquals() {
         Choice firstChoice = new ChoiceImpl("aLabel", true);
         Choice secondChoice = new ChoiceImpl("otherLabel", true);
 
