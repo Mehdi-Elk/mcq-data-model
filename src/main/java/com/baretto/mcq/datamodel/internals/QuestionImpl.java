@@ -79,12 +79,11 @@ public final class QuestionImpl implements Question, Serializable {
     }
 
 
-    @Override
     public void setSelectedChoices(List<Choice> theSelectedChoices) {
         this.selectedChoices = theSelectedChoices;
     }
 
-    @Override
+
     public boolean answerIsCorrect() {
 return this.selectedChoices.containsAll(this.correctChoises);
     }
