@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * A MCQ (multiple choice questions) contain all the question for a test.
+ *
  * Created by WORK on 14/01/2017.
  */
 public class MCQ {
