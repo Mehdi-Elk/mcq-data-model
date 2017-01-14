@@ -1,5 +1,6 @@
 package com.baretto.mcq.datamodel;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,4 +25,16 @@ public interface Question {
      * @return {@link AnswerConstraint}
      */
     AnswerConstraint getAnswerConstraint();
+
+    /**
+     * replace the user choices for the question
+     * @param selectedChoices
+     */
+    void setSelectedChoices(List<Choice> selectedChoices);
+
+    /**
+     * True if the question is answer Correctly.
+     * @return
+     */
+    boolean answerIsCorrect();
 }

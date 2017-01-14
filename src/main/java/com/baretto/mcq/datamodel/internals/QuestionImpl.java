@@ -5,29 +5,32 @@ import com.baretto.mcq.datamodel.Choice;
 import com.baretto.mcq.datamodel.Question;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Simple implementation of question for MCQ.
- *
+ * <p>
  * Created by mehdi on 07/01/17.
  */
 public final class QuestionImpl implements Question, Serializable {
 
     private final String label;
     private final Set<Choice> choices = new HashSet();
+    private List<Choice> selectedChoices = new ArrayList();
     private AnswerConstraint answerConstraint;
+    private final Set<Choice> correctChoises = new HashSet();
 
     /**
      * Instanciate a MCQ Question.
-     * @param aLabel
+     *  @param aLabel
      * @param theChoices
+     * @param TheCorrectChoices
      * @param anAnswerConstraint
      */
-     public QuestionImpl(String aLabel, Set<Choice> theChoices, AnswerConstraint anAnswerConstraint){
+    public QuestionImpl(String aLabel, Set<Choice> theChoices, Set<Choice> TheCorrectChoices, AnswerConstraint anAnswerConstraint) {
         label = aLabel;
         choices.addAll(theChoices);
+        correctChoises.addAll(TheCorrectChoices);
         answerConstraint = anAnswerConstraint;
     }
 
@@ -57,7 +60,7 @@ public final class QuestionImpl implements Question, Serializable {
         if (!label.equals(question.label)) {
             return false;
         }
-        if (!choices.equals(question.choices)){
+        if (!choices.equals(question.choices)) {
             return false;
         }
         return answerConstraint == question.answerConstraint;
@@ -70,4 +73,21 @@ public final class QuestionImpl implements Question, Serializable {
         result = 31 * result + answerConstraint.hashCode();
         return result;
     }
+
+    public List<Choice> getSelectedChoices() {
+        return selectedChoices;
+    }
+
+
+    @Override
+    public void setSelectedChoices(List<Choice> theSelectedChoices) {
+        this.selectedChoices = theSelectedChoices;
+    }
+
+    @Override
+    public boolean answerIsCorrect() {
+return this.selectedChoices.containsAll(this.correctChoises);
+    }
+
+
 }
