@@ -12,7 +12,8 @@ public final class ChoiceImpl implements Choice, Serializable {
 
     private final String label;
 
-    private final boolean isSelected = false;
+    /** Indicate if the current {@link ChoiceImpl} is selected. */
+    private boolean isSelected = false;
 
     /**
      * Instanciate a choice for a MCQ Question with the provided label.
@@ -34,6 +35,14 @@ public final class ChoiceImpl implements Choice, Serializable {
      */
     public boolean isSelected() {
         return isSelected;
+    }
+
+    /**
+     * Define if the choice is selected or not for the MCQ question.
+     * @param isSelected True if the choice is selected.
+     */
+    public void setSelected(boolean isSelected) {
+        this.isSelected = isSelected;
     }
 
     @Override

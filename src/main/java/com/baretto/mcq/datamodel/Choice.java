@@ -21,4 +21,10 @@ public interface Choice {
      *          false in other case.
      */
     boolean isSelected();
+
+    /**
+     * Define if the choice is selected or not for the MCQ question.
+     * @param isSelected True if the choice is selected.
+     */
+    void setSelected(boolean isSelected);
 }
