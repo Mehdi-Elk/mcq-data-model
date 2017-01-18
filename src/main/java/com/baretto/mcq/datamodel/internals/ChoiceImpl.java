@@ -11,19 +11,29 @@ import java.io.Serializable;
 public final class ChoiceImpl implements Choice, Serializable {
 
     private final String label;
-    private final boolean isValid;
 
-    public ChoiceImpl(String aLabel, boolean isValid) {
-        this.label = aLabel;
-        this.isValid = isValid;
+    private final boolean isSelected = false;
+
+    /**
+     * Instanciate a choice for a MCQ Question with the provided label.
+     * @param aLabel
+     */
+    public ChoiceImpl(String aLabel) {
+        this.label = aLabel;;
     }
 
     public String getLabel() {
         return label;
     }
 
-    public boolean isValid() {
-        return isValid;
+    /**
+     * Check if the choice is selected for the MCQ question.
+     *
+     * @return true if the choice is selected ,
+     *          false in other case.
+     */
+    public boolean isSelected() {
+        return isSelected;
     }
 
     @Override
@@ -37,7 +47,7 @@ public final class ChoiceImpl implements Choice, Serializable {
 
         ChoiceImpl choice = (ChoiceImpl) o;
 
-        if (isValid != choice.isValid) {
+        if (isSelected != choice.isSelected) {
             return false;
         }
         return label.equals(choice.label);
@@ -46,7 +56,7 @@ public final class ChoiceImpl implements Choice, Serializable {
     @Override
     public int hashCode() {
         int result = label.hashCode();
-        result = 31 * result + (isValid ? 1 : 0);
+        result = 31 * result + (isSelected ? 1 : 0);
         return result;
     }
 }

@@ -12,8 +12,8 @@ public class ChoiceImplTest {
 
     @Test
     public void testShouldBeEquals() {
-        Choice firstChoice = new ChoiceImpl("aLabel", true);
-        Choice secondChoice = new ChoiceImpl("aLabel", true);
+        Choice firstChoice = new ChoiceImpl("aLabel");
+        Choice secondChoice = new ChoiceImpl("aLabel");
 
         Assert.assertEquals(firstChoice, secondChoice);
         Assert.assertEquals(secondChoice, firstChoice);
@@ -24,16 +24,11 @@ public class ChoiceImplTest {
 
     @Test
     public void testShouldBeNotEquals() {
-        Choice firstChoice = new ChoiceImpl("aLabel", true);
-        Choice secondChoice = new ChoiceImpl("otherLabel", true);
+        Choice firstChoice = new ChoiceImpl("aLabel");
+        Choice secondChoice = new ChoiceImpl("otherLabel");
 
 
         Assert.assertNotEquals(firstChoice, secondChoice);
         Assert.assertNotEquals(secondChoice, firstChoice);
-
-
-        secondChoice = new ChoiceImpl("aLabel", false);
-        Assert.assertNotEquals(firstChoice, secondChoice);
-
     }
 }

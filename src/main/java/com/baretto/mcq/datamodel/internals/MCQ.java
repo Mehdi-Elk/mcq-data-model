@@ -35,8 +35,8 @@ public class MCQ {
     private Set<Question> generateQuestion(int i) {
         Set<Question> theQuestions = new HashSet<Question>();
         for (int j = 0; j <= i; j++) {
-            Choice firstChoice = new ChoiceImpl("firstLabel"+i, true);
-            Choice secondChoice = new ChoiceImpl("SecondLabel"+i, false);
+            Choice firstChoice = new ChoiceImpl("firstLabel"+i);
+            Choice secondChoice = new ChoiceImpl("SecondLabel"+i);
 
             Set <Choice> choices = new HashSet<Choice>();
             choices.add(firstChoice);

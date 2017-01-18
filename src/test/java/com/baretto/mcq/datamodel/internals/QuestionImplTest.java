@@ -67,7 +67,7 @@ public class QuestionImplTest {
         Set<Choice> choices = new HashSet();
         choices.add(firstChoice);
         choices.add(secondChoice);
-        Mockito.when(firstChoice.isValid()).thenReturn(true);
+        Mockito.when(firstChoice.isSelected()).thenReturn(true);
         Set<Choice> theCorrectchoices = new HashSet();
         theCorrectchoices.add(firstChoice);
         QuestionImpl question = new QuestionImpl("theQuestionLabel", choices, theCorrectchoices, AnswerConstraint.ONE_RESPONSE);

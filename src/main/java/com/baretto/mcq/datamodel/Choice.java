@@ -15,10 +15,10 @@ public interface Choice {
     String getLabel();
 
     /**
-     * Check if the choice is valid for the MCQ question.
+     * Check if the choice is selected for the MCQ question.
      *
-     * @return true if the choice is valid ,
+     * @return true if the choice is selected ,
      *          false in other case.
      */
-    boolean isValid();
+    boolean isSelected();
 }
