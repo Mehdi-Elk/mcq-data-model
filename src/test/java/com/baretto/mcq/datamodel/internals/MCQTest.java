@@ -1,7 +1,11 @@
 package com.baretto.mcq.datamodel.internals;
 
+import com.baretto.mcq.datamodel.Choice;
+import com.baretto.mcq.datamodel.Question;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Set;
 
 /**
  * Created by WORK on 14/01/2017.
@@ -16,4 +20,5 @@ public class MCQTest {
         Assert.assertEquals(1, aMCQ.getQuestions().size());
 
     }
+
 }

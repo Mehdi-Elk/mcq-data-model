@@ -36,8 +36,8 @@ public class MCQ implements Serializable {
     private Set<Question> generateQuestion(int i) {
         Set<Question> theQuestions = new HashSet<Question>();
         for (int j = 0; j <= i; j++) {
-            Choice firstChoice = new ChoiceImpl("firstLabel"+i);
-            Choice secondChoice = new ChoiceImpl("SecondLabel"+i);
+            Choice firstChoice = new ChoiceImpl("firstLabel"+j);
+            Choice secondChoice = new ChoiceImpl("SecondLabel"+j);
 
             Set <Choice> choices = new HashSet<Choice>();
             choices.add(firstChoice);
@@ -46,7 +46,7 @@ public class MCQ implements Serializable {
             Set <Choice> correctChoices = new HashSet<Choice>();
             correctChoices.add(firstChoice);
 
-           Question question = new QuestionImpl("label"+i,choices,correctChoices, AnswerConstraint.ONE_RESPONSE);
+           Question question = new QuestionImpl("label"+j,choices,correctChoices, AnswerConstraint.ONE_RESPONSE);
             theQuestions.add(question);
         }
         return theQuestions;
