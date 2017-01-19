@@ -4,6 +4,7 @@ import com.baretto.mcq.datamodel.AnswerConstraint;
 import com.baretto.mcq.datamodel.Choice;
 import com.baretto.mcq.datamodel.Question;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  *
  * Created by WORK on 14/01/2017.
  */
-public class MCQ {
+public class MCQ implements Serializable {
 
 
     private Set<Question> questions;
