@@ -47,7 +47,7 @@ public class MCQ implements Serializable {
             Choice sixthChoice = new ChoiceImpl(j + ".6 : " + "Too much work is spent updating the Scrum board before the meeting ");
 
 
-            Set<Choice> choices = new TreeSet<Choice>();
+            Set<Choice> choices = new HashSet<Choice>();
             choices.add(firstChoice);
             choices.add(secondChoice);
 
