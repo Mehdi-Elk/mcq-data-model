@@ -17,7 +17,7 @@ public class MCQTest {
 
         MCQ aMCQ = new MCQ(2);
 
-        Assert.assertEquals(1, aMCQ.getQuestions().size());
+        Assert.assertEquals(2, aMCQ.getQuestions().size());
 
     }
 
