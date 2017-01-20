@@ -50,9 +50,16 @@ public class MCQ implements Serializable {
             Set<Choice> choices = new HashSet<Choice>();
             choices.add(firstChoice);
             choices.add(secondChoice);
+            choices.add(thirdChoice);
+            choices.add(fourthChoice);
+            choices.add(fithChoice);
+            choices.add(sixthChoice);
 
             Set<Choice> correctChoices = new HashSet<Choice>();
-            correctChoices.add(firstChoice);
+            correctChoices.add(secondChoice);
+            correctChoices.add(fourthChoice);
+            correctChoices.add(fithChoice);
+
 
             final String questionLabel = "The Daily Scrum is an event that happens every day. What would be three key concerns if the frequency were to be lowered to every two or three days?";
             Question question = new QuestionImpl(" j : " + questionLabel, choices, correctChoices, AnswerConstraint.ALL_THAT_APPLY);
