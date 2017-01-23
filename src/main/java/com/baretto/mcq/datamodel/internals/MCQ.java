@@ -63,7 +63,7 @@ public class MCQ implements Serializable {
 
 
             final String questionLabel = "The Daily Scrum is an event that happens every day. What would be three key concerns if the frequency were to be lowered to every two or three days?";
-            Question question = new QuestionImpl(" j : " + questionLabel, choices, correctChoices, AnswerConstraint.ALL_THAT_APPLY);
+            Question question = new QuestionImpl(j+" : " + questionLabel, choices, correctChoices, AnswerConstraint.ALL_THAT_APPLY);
             theQuestions.add(question);
         }
         return theQuestions;
