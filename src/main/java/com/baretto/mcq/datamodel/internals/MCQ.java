@@ -6,6 +6,7 @@ import com.baretto.mcq.datamodel.Question;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -37,7 +38,7 @@ public class MCQ implements Serializable {
      * @return
      */
     private Set<Question> generateQuestion(int i) {
-        Set<Question> theQuestions = new HashSet<Question>();
+        Set<Question> theQuestions = new LinkedHashSet<Question>();
         for (int j = 0; j < i; j++) {
             Choice firstChoice = new ChoiceImpl(j + ".1 : " + "The Product Owner cannot accurately report progress to the stakeholders");
             Choice secondChoice = new ChoiceImpl(j + ".2 : " + "Impediments are raised and resolved more slowly");
@@ -47,7 +48,7 @@ public class MCQ implements Serializable {
             Choice sixthChoice = new ChoiceImpl(j + ".6 : " + "Too much work is spent updating the Scrum board before the meeting ");
 
 
-            Set<Choice> choices = new HashSet<Choice>();
+            LinkedHashSet<Choice> choices = new LinkedHashSet<Choice>();
             choices.add(firstChoice);
             choices.add(secondChoice);
             choices.add(thirdChoice);

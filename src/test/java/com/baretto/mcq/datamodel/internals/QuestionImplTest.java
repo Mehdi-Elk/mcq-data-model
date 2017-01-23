@@ -9,10 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by mehdi on 09/01/17.
@@ -28,7 +25,7 @@ public class QuestionImplTest {
 
     @Test
     public void testShouldBeEquals() {
-        Set<Choice> choices = new HashSet();
+        LinkedHashSet<Choice> choices = new LinkedHashSet<Choice>();
         choices.add(firstChoice);
         choices.add(secondChoice);
 
@@ -43,7 +40,7 @@ public class QuestionImplTest {
 
     @Test
     public void testShouldBeNotEquals() {
-        Set<Choice> choices = new HashSet();
+        LinkedHashSet<Choice> choices = new LinkedHashSet<Choice>();
         choices.add(firstChoice);
         choices.add(secondChoice);
         QuestionImpl firstQuestion = new QuestionImpl("alabel", choices,choices , AnswerConstraint.ONE_RESPONSE);
@@ -56,7 +53,7 @@ public class QuestionImplTest {
         secondQuestion = new QuestionImpl("alabel", choices, choices, AnswerConstraint.ALL_THAT_APPLY);
         Assert.assertNotEquals(firstQuestion, secondQuestion);
 
-        Set<Choice> otherChoices = new HashSet();
+        LinkedHashSet<Choice> otherChoices = new LinkedHashSet<Choice>();
         otherChoices.add(firstChoice);
         secondQuestion = new QuestionImpl("alabel", otherChoices, otherChoices, AnswerConstraint.ALL_THAT_APPLY);
         Assert.assertNotEquals(firstQuestion, secondQuestion);
@@ -64,7 +61,7 @@ public class QuestionImplTest {
 
     @Test
     public void testGoodChoiceIsSelectedByUser() {
-        Set<Choice> choices = new HashSet();
+        LinkedHashSet<Choice> choices = new LinkedHashSet<Choice>();
         choices.add(firstChoice);
         choices.add(secondChoice);
         Mockito.when(firstChoice.isSelected()).thenReturn(true);

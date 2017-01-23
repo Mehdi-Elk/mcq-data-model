@@ -15,7 +15,7 @@ import java.util.*;
 public final class QuestionImpl implements Question, Serializable {
 
     private final String label;
-    private final Set<Choice> choices = new HashSet();
+    private final Set<Choice> choices = new LinkedHashSet();
     private List<Choice> selectedChoices = new ArrayList();
     private AnswerConstraint answerConstraint;
     private final Set<Choice> correctChoises = new HashSet();
@@ -27,12 +27,14 @@ public final class QuestionImpl implements Question, Serializable {
      * @param TheCorrectChoices
      * @param anAnswerConstraint
      */
-    public QuestionImpl(String aLabel, Set<Choice> theChoices, Set<Choice> TheCorrectChoices, AnswerConstraint anAnswerConstraint) {
+    public QuestionImpl(String aLabel, LinkedHashSet<Choice> theChoices, Set<Choice> TheCorrectChoices, AnswerConstraint anAnswerConstraint) {
         label = aLabel;
         choices.addAll(theChoices);
         correctChoises.addAll(TheCorrectChoices);
         answerConstraint = anAnswerConstraint;
     }
+
+
 
     public String getLabel() {
         return label;
