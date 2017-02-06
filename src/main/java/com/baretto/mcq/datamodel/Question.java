@@ -93,7 +93,7 @@ return this.selectedChoices.containsAll(this.correctChoises);
     }
 
     public boolean choiceIsCorrect(Choice choice){
-        return this.selectedChoices.contains(choice);
+        return this.correctChoises.contains(choice);
     }
 
 }
