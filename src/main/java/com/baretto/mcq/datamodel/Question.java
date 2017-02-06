@@ -92,7 +92,7 @@ public final class Question implements  Serializable {
 return this.selectedChoices.containsAll(this.correctChoises);
     }
 
-    public boolean choiceIsCorrect(java.awt.Choice choice){
+    public boolean choiceIsCorrect(Choice choice){
         return this.selectedChoices.contains(choice);
     }
 
