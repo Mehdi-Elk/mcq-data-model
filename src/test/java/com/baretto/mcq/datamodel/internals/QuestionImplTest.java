@@ -1,7 +1,8 @@
 package com.baretto.mcq.datamodel.internals;
 
 import com.baretto.mcq.datamodel.AnswerConstraint;
-import com.baretto.mcq.datamodel.Choice;
+import com.baretto.mcq.datamodel.ChoiceImpl;
+import com.baretto.mcq.datamodel.QuestionImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,14 +19,14 @@ import java.util.*;
 public class QuestionImplTest {
 
     @Mock
-    private Choice firstChoice;
+    private ChoiceImpl firstChoice;
     @Mock
-    private Choice secondChoice;
+    private ChoiceImpl secondChoice;
 
 
     @Test
     public void testShouldBeEquals() {
-        LinkedHashSet<Choice> choices = new LinkedHashSet<Choice>();
+        List<ChoiceImpl> choices = new ArrayList<ChoiceImpl>();
         choices.add(firstChoice);
         choices.add(secondChoice);
 
@@ -40,7 +41,7 @@ public class QuestionImplTest {
 
     @Test
     public void testShouldBeNotEquals() {
-        LinkedHashSet<Choice> choices = new LinkedHashSet<Choice>();
+        List<ChoiceImpl> choices = new ArrayList<ChoiceImpl>();
         choices.add(firstChoice);
         choices.add(secondChoice);
         QuestionImpl firstQuestion = new QuestionImpl("alabel", choices,choices , AnswerConstraint.ONE_RESPONSE);
@@ -53,7 +54,7 @@ public class QuestionImplTest {
         secondQuestion = new QuestionImpl("alabel", choices, choices, AnswerConstraint.ALL_THAT_APPLY);
         Assert.assertNotEquals(firstQuestion, secondQuestion);
 
-        LinkedHashSet<Choice> otherChoices = new LinkedHashSet<Choice>();
+        List<ChoiceImpl> otherChoices = new ArrayList<ChoiceImpl>();
         otherChoices.add(firstChoice);
         secondQuestion = new QuestionImpl("alabel", otherChoices, otherChoices, AnswerConstraint.ALL_THAT_APPLY);
         Assert.assertNotEquals(firstQuestion, secondQuestion);
@@ -61,14 +62,14 @@ public class QuestionImplTest {
 
     @Test
     public void testGoodChoiceIsSelectedByUser() {
-        LinkedHashSet<Choice> choices = new LinkedHashSet<Choice>();
+        List<ChoiceImpl> choices = new ArrayList<ChoiceImpl>();
         choices.add(firstChoice);
         choices.add(secondChoice);
         Mockito.when(firstChoice.isSelected()).thenReturn(true);
-        Set<Choice> theCorrectchoices = new HashSet();
+        List<ChoiceImpl> theCorrectchoices = new ArrayList<ChoiceImpl>();
         theCorrectchoices.add(firstChoice);
         QuestionImpl question = new QuestionImpl("theQuestionLabel", choices, theCorrectchoices, AnswerConstraint.ONE_RESPONSE);
-        List<Choice> selectedChoices = new ArrayList();
+        List<ChoiceImpl> selectedChoices = new ArrayList();
         selectedChoices.add(firstChoice);
 
         question.setSelectedChoices(selectedChoices);

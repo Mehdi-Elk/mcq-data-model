@@ -1,6 +1,4 @@
-package com.baretto.mcq.datamodel.internals;
-
-import com.baretto.mcq.datamodel.Choice;
+package com.baretto.mcq.datamodel;
 
 import java.io.Serializable;
 
@@ -8,13 +6,16 @@ import java.io.Serializable;
  * Simple implementation of Choice for MCQ.
  * Created by mehdi on 07/01/17.
  */
-public final class ChoiceImpl implements Choice, Serializable {
+public class ChoiceImpl implements  Serializable {
 
-    private final String label;
+    private String label;
 
     /** Indicate if the current {@link ChoiceImpl} is selected. */
     private boolean isSelected = false;
 
+    private ChoiceImpl(){
+
+    }
     /**
      * Instanciate a choice for a MCQ Question with the provided label.
      * @param aLabel

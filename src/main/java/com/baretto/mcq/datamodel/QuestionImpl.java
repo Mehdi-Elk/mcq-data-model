@@ -1,8 +1,4 @@
-package com.baretto.mcq.datamodel.internals;
-
-import com.baretto.mcq.datamodel.AnswerConstraint;
-import com.baretto.mcq.datamodel.Choice;
-import com.baretto.mcq.datamodel.Question;
+package com.baretto.mcq.datamodel;
 
 import java.io.Serializable;
 import java.util.*;
@@ -12,25 +8,29 @@ import java.util.*;
  * <p>
  * Created by mehdi on 07/01/17.
  */
-public final class QuestionImpl implements Question, Serializable {
+public final class QuestionImpl implements  Serializable {
 
-    private final String label;
-    private final Set<Choice> choices = new LinkedHashSet();
-    private List<Choice> selectedChoices = new ArrayList();
+    private  String label;
+    private final List<ChoiceImpl> choices = new ArrayList();
+    private final Set<ChoiceImpl> selectedChoices = new HashSet();
     private AnswerConstraint answerConstraint;
-    private final Set<Choice> correctChoises = new HashSet();
+    private final List<ChoiceImpl> correctChoises = new ArrayList();
 
+
+    QuestionImpl(){
+
+    }
     /**
      * Instanciate a MCQ Question.
      *  @param aLabel
      * @param theChoices
-     * @param TheCorrectChoices
+     * @param theCorrectChoices
      * @param anAnswerConstraint
      */
-    public QuestionImpl(String aLabel, LinkedHashSet<Choice> theChoices, Set<Choice> TheCorrectChoices, AnswerConstraint anAnswerConstraint) {
+    public QuestionImpl(String aLabel, List<ChoiceImpl> theChoices, List<ChoiceImpl> theCorrectChoices, AnswerConstraint anAnswerConstraint) {
         label = aLabel;
         choices.addAll(theChoices);
-        correctChoises.addAll(TheCorrectChoices);
+        correctChoises.addAll(theCorrectChoices);
         answerConstraint = anAnswerConstraint;
     }
 
@@ -40,7 +40,7 @@ public final class QuestionImpl implements Question, Serializable {
         return label;
     }
 
-    public Set<Choice> getChoices() {
+    public List<ChoiceImpl> getChoices() {
         return choices;
     }
 
@@ -76,13 +76,14 @@ public final class QuestionImpl implements Question, Serializable {
         return result;
     }
 
-    public List<Choice> getSelectedChoices() {
+    public Set<ChoiceImpl> getSelectedChoices() {
         return selectedChoices;
     }
 
 
-    public void setSelectedChoices(List<Choice> theSelectedChoices) {
-        this.selectedChoices = theSelectedChoices;
+    public void setSelectedChoices(List<ChoiceImpl> theSelectedChoices) {
+        this.selectedChoices.clear();
+        this.selectedChoices.addAll(theSelectedChoices);
     }
 
 
