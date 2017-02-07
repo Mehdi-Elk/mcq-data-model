@@ -2,6 +2,7 @@ package com.baretto.mcq.datamodel;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.List;
 
 /**
  * Simple implementation of question for MCQ.
@@ -91,5 +92,8 @@ public final class Question implements  Serializable {
 return this.selectedChoices.containsAll(this.correctChoises);
     }
 
+    public boolean choiceIsCorrect(Choice choice){
+        return this.correctChoises.contains(choice);
+    }
 
 }
