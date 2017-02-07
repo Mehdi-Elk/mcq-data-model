@@ -1,6 +1,6 @@
 package com.baretto.mcq.datamodel.internals;
 
-import com.baretto.mcq.datamodel.ChoiceImpl;
+import com.baretto.mcq.datamodel.Choice;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,8 +12,8 @@ public class ChoiceImplTest {
 
     @Test
     public void testShouldBeEquals() {
-        ChoiceImpl firstChoice = new ChoiceImpl("aLabel");
-        ChoiceImpl secondChoice = new ChoiceImpl("aLabel");
+        Choice firstChoice = new Choice("aLabel");
+        Choice secondChoice = new Choice("aLabel");
 
         Assert.assertEquals(firstChoice, secondChoice);
         Assert.assertEquals(secondChoice, firstChoice);
@@ -24,8 +24,8 @@ public class ChoiceImplTest {
 
     @Test
     public void testShouldBeNotEquals() {
-        ChoiceImpl firstChoice = new ChoiceImpl("aLabel");
-        ChoiceImpl secondChoice = new ChoiceImpl("otherLabel");
+        Choice firstChoice = new Choice("aLabel");
+        Choice secondChoice = new Choice("otherLabel");
 
 
         Assert.assertNotEquals(firstChoice, secondChoice);

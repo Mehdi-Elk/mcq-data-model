@@ -8,16 +8,16 @@ import java.util.*;
  * <p>
  * Created by mehdi on 07/01/17.
  */
-public final class QuestionImpl implements  Serializable {
+public final class Question implements  Serializable {
 
     private  String label;
-    private final List<ChoiceImpl> choices = new ArrayList();
-    private final Set<ChoiceImpl> selectedChoices = new HashSet();
+    private final List<Choice> choices = new ArrayList();
+    private final Set<Choice> selectedChoices = new HashSet();
     private AnswerConstraint answerConstraint;
-    private final List<ChoiceImpl> correctChoises = new ArrayList();
+    private final List<Choice> correctChoises = new ArrayList();
 
 
-    QuestionImpl(){
+    Question(){
 
     }
     /**
@@ -27,7 +27,7 @@ public final class QuestionImpl implements  Serializable {
      * @param theCorrectChoices
      * @param anAnswerConstraint
      */
-    public QuestionImpl(String aLabel, List<ChoiceImpl> theChoices, List<ChoiceImpl> theCorrectChoices, AnswerConstraint anAnswerConstraint) {
+    public Question(String aLabel, List<Choice> theChoices, List<Choice> theCorrectChoices, AnswerConstraint anAnswerConstraint) {
         label = aLabel;
         choices.addAll(theChoices);
         correctChoises.addAll(theCorrectChoices);
@@ -40,7 +40,7 @@ public final class QuestionImpl implements  Serializable {
         return label;
     }
 
-    public List<ChoiceImpl> getChoices() {
+    public List<Choice> getChoices() {
         return choices;
     }
 
@@ -57,7 +57,7 @@ public final class QuestionImpl implements  Serializable {
             return false;
         }
 
-        QuestionImpl question = (QuestionImpl) o;
+        Question question = (Question) o;
 
         if (!label.equals(question.label)) {
             return false;
@@ -76,12 +76,12 @@ public final class QuestionImpl implements  Serializable {
         return result;
     }
 
-    public Set<ChoiceImpl> getSelectedChoices() {
+    public Set<Choice> getSelectedChoices() {
         return selectedChoices;
     }
 
 
-    public void setSelectedChoices(List<ChoiceImpl> theSelectedChoices) {
+    public void setSelectedChoices(List<Choice> theSelectedChoices) {
         this.selectedChoices.clear();
         this.selectedChoices.addAll(theSelectedChoices);
     }

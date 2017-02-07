@@ -6,21 +6,21 @@ import java.io.Serializable;
  * Simple implementation of Choice for MCQ.
  * Created by mehdi on 07/01/17.
  */
-public class ChoiceImpl implements  Serializable {
+public class Choice implements  Serializable {
 
     private String label;
 
-    /** Indicate if the current {@link ChoiceImpl} is selected. */
+    /** Indicate if the current {@link Choice} is selected. */
     private boolean isSelected = false;
 
-    private ChoiceImpl(){
+    private Choice(){
 
     }
     /**
      * Instanciate a choice for a MCQ Question with the provided label.
      * @param aLabel
      */
-    public ChoiceImpl(String aLabel) {
+    public Choice(String aLabel) {
         this.label = aLabel;;
     }
 
@@ -55,7 +55,7 @@ public class ChoiceImpl implements  Serializable {
             return false;
         }
 
-        ChoiceImpl choice = (ChoiceImpl) o;
+        Choice choice = (Choice) o;
 
         if (isSelected != choice.isSelected) {
             return false;
