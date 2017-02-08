@@ -1,5 +1,7 @@
 package com.baretto.mcq.datamodel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.*;
 import java.util.List;
@@ -10,11 +12,15 @@ import java.util.List;
  * Created by mehdi on 07/01/17.
  */
 public final class Question implements  Serializable {
-
+    @JsonProperty
     private  String label;
+    @JsonProperty
     private final List<Choice> choices = new ArrayList();
+    @JsonProperty
     private final Set<Choice> selectedChoices = new HashSet();
+    @JsonProperty
     private AnswerConstraint answerConstraint;
+    @JsonProperty
     private final List<Choice> correctChoises = new ArrayList();
 
 
@@ -34,8 +40,6 @@ public final class Question implements  Serializable {
         correctChoises.addAll(theCorrectChoices);
         answerConstraint = anAnswerConstraint;
     }
-
-
 
     public String getLabel() {
         return label;
