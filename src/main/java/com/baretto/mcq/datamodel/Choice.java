@@ -48,25 +48,16 @@ public class Choice implements  Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Choice choice = (Choice) o;
 
-        if (isSelected != choice.isSelected) {
-            return false;
-        }
-        return label.equals(choice.label);
+        return label != null ? label.equals(choice.label) : choice.label == null;
     }
 
     @Override
     public int hashCode() {
-        int result = label.hashCode();
-        result = 31 * result + (isSelected ? 1 : 0);
-        return result;
+        return label != null ? label.hashCode() : 0;
     }
 }
