@@ -2,6 +2,8 @@ package com.baretto.mcq.datamodel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -15,32 +17,41 @@ import java.util.*;
 public class MCQ implements Serializable {
 
 
-    private Set<Question> QuestionImpls;
+    private Set<Question> questions = new HashSet();
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MCQ.class);
     /**
      * generate a MCQ with "i" QuestionImpls
      *
-     * @param i
+     * @param numberOfQuestions
      */
-    public MCQ(int i) {
+    public MCQ(int numberOfQuestions) {
 
-        QuestionImpls = generateQuestionImpl(i);
+        questions = generateQuestionImpl(numberOfQuestions);
 
     }
 
     public MCQ(String json) {
         try {
-            QuestionImpls = generateQuestionImplsFromJson(json);
+            questions.addAll(extractQuestionsFromJson(json));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Error during question extraction from json",e);
         }
     }
 
-    private Set<Question> generateQuestionImplsFromJson(String json) throws IOException {
-        Set<Question> QuestionImpls = new HashSet();
-        List<Question> extract = new ObjectMapper().readValue(json, new TypeReference<List<Question>>() {});
-        QuestionImpls.addAll(extract);
-        return QuestionImpls;
+    public MCQ(String json, int numberOfQuestions){
+        try {
+            List<Question> allQuestions = extractQuestionsFromJson(json);
+            Collections.shuffle(allQuestions);
+            questions.addAll(allQuestions.subList(0, numberOfQuestions));
+        } catch (IOException e) {
+            LOGGER.error("Error during question extraction from json",e);
+        }
+    }
+
+
+    private List<Question> extractQuestionsFromJson(String json) throws IOException {
+      return new ObjectMapper().readValue(json, new TypeReference<List<Question>>() {});
     }
 
     /**
@@ -88,6 +99,6 @@ public class MCQ implements Serializable {
      * @return
      */
     public Set<Question> getQuestions() {
-        return QuestionImpls;
+        return questions;
     }
 }

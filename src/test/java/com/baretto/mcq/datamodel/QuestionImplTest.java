@@ -1,4 +1,4 @@
-package com.baretto.mcq.datamodel.internals;
+package com.baretto.mcq.datamodel;
 
 import com.baretto.mcq.datamodel.AnswerConstraint;
 import com.baretto.mcq.datamodel.Choice;
