@@ -100,4 +100,7 @@ return this.selectedChoices.containsAll(this.correctChoises);
         return this.correctChoises.contains(choice);
     }
 
+    public int retrieveNumberOfCorrectChoices(){
+        return this.correctChoises.size();
+    }
 }

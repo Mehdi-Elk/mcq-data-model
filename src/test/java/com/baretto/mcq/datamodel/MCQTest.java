@@ -9,14 +9,6 @@ import org.junit.Test;
  */
 public class MCQTest {
 
-    @Test
-    public void generateOneMCQWithTwoQuestionTest() {
-
-        MCQ aMCQ = new MCQ(2);
-
-        Assert.assertEquals(2, aMCQ.getQuestions().size());
-
-    }
 
     @Test
     public void testGenerateMCQFromJson(){
