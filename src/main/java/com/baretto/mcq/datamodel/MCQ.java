@@ -34,6 +34,11 @@ public class MCQ implements Serializable {
             List<Question> allQuestions = extractQuestionsFromJson(json);
             Collections.shuffle(allQuestions);
             questions.addAll(allQuestions.subList(0, numberOfQuestions));
+
+            for (Question question:questions) {
+                Collections.shuffle(question.getChoices());
+            }
+            
         } catch (IOException e) {
             LOGGER.error("Error during question extraction from json",e);
         }
