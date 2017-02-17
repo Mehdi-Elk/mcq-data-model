@@ -63,11 +63,11 @@ public class QuestionImplTest {
 
     @Test
     public void testGoodChoiceIsSelectedByUser() {
-        List<Choice> choices = new ArrayList<Choice>();
+        List<Choice> choices = new ArrayList();
         choices.add(firstChoice);
         choices.add(secondChoice);
         Mockito.when(firstChoice.isSelected()).thenReturn(true);
-        List<Choice> theCorrectchoices = new ArrayList<Choice>();
+        List<Choice> theCorrectchoices = new ArrayList();
         theCorrectchoices.add(firstChoice);
         Question question = new Question("theQuestionLabel", choices, theCorrectchoices, AnswerConstraint.ONE_RESPONSE);
         List<Choice> selectedChoices = new ArrayList();
@@ -80,5 +80,26 @@ public class QuestionImplTest {
 
     }
 
+
+    @Test
+    public void testTooMuchChoiceIsSelectedByUser() {
+        List<Choice> choices = new ArrayList();
+        choices.add(firstChoice);
+        choices.add(secondChoice);
+        Mockito.when(firstChoice.isSelected()).thenReturn(true);
+        Mockito.when(secondChoice.isSelected()).thenReturn(true);
+        List<Choice> theCorrectchoices = new ArrayList();
+        theCorrectchoices.add(firstChoice);
+        Question question = new Question("theQuestionLabel", choices, theCorrectchoices, AnswerConstraint.ONE_RESPONSE);
+        List<Choice> selectedChoices = new ArrayList();
+        selectedChoices.add(firstChoice);
+        selectedChoices.add(secondChoice);
+
+        question.setSelectedChoices(selectedChoices);
+
+        Assert.assertFalse(question.answerIsCorrect());
+
+
+    }
 
 }

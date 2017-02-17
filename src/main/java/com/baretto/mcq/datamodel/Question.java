@@ -13,15 +13,15 @@ import java.util.List;
  */
 public final class Question implements  Serializable {
     @JsonProperty
-    private  String label;
-    @JsonProperty
     private final List<Choice> choices = new ArrayList();
     @JsonProperty
     private final Set<Choice> selectedChoices = new HashSet();
     @JsonProperty
-    private AnswerConstraint answerConstraint;
-    @JsonProperty
     private final List<Choice> correctChoises = new ArrayList();
+    @JsonProperty
+    private  String label;
+    @JsonProperty
+    private AnswerConstraint answerConstraint;
 
 
     Question(){
@@ -93,7 +93,7 @@ public final class Question implements  Serializable {
 
 
     public boolean answerIsCorrect() {
-return this.selectedChoices.containsAll(this.correctChoises);
+return(( this.selectedChoices.containsAll(this.correctChoises))&&(this.correctChoises.containsAll(selectedChoices)));
     }
 
     public boolean choiceIsCorrect(Choice choice){
