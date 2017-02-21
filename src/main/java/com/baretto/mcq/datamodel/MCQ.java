@@ -40,11 +40,13 @@ public class MCQ implements Serializable {
     private void shuffleChoices() {
         for (Question question : questions) {
             List<Choice> choicesToShuffle = question.getChoices();
-            int lastIndex = choicesToShuffle.size() - 1;
-            if (ALL_OF_THE_ABOVE.equals(choicesToShuffle.get(lastIndex).getLabel())) {
-                choicesToShuffle = choicesToShuffle.subList(0, lastIndex);
+            if(choicesToShuffle.size()>2){
+                int lastIndex = choicesToShuffle.size() - 1;
+                if (ALL_OF_THE_ABOVE.equals(choicesToShuffle.get(lastIndex).getLabel())) {
+                    choicesToShuffle = choicesToShuffle.subList(0, lastIndex);
+                }
+                Collections.shuffle(choicesToShuffle);
             }
-            Collections.shuffle(choicesToShuffle);
         }
     }
 
