@@ -11,7 +11,7 @@ import java.util.List;
  * <p>
  * Created by mehdi on 07/01/17.
  */
-public final class Question implements  Serializable {
+public final class Question implements Serializable {
     @JsonProperty
     private final List<Choice> choices = new ArrayList();
     @JsonProperty
@@ -19,22 +19,21 @@ public final class Question implements  Serializable {
     @JsonProperty
     private final List<Choice> correctChoises = new ArrayList();
     @JsonProperty
-    private  String label;
+    private String label;
     @JsonProperty
     private AnswerConstraint answerConstraint;
+    @JsonProperty
+    private String correction;
 
 
-
-
-    private  String correction = "ceci est un test de correction";
-
-
-    Question(){
+    Question() {
 
     }
+
     /**
      * Instanciate a MCQ Question.
-     *  @param aLabel
+     *
+     * @param aLabel
      * @param theChoices
      * @param theCorrectChoices
      * @param anAnswerConstraint
@@ -98,14 +97,14 @@ public final class Question implements  Serializable {
 
 
     public boolean answerIsCorrect() {
-return(( this.selectedChoices.containsAll(this.correctChoises))&&(this.correctChoises.containsAll(selectedChoices)));
+        return ((this.selectedChoices.containsAll(this.correctChoises)) && (this.correctChoises.containsAll(selectedChoices)));
     }
 
-    public boolean choiceIsCorrect(Choice choice){
+    public boolean choiceIsCorrect(Choice choice) {
         return this.correctChoises.contains(choice);
     }
 
-    public int retrieveNumberOfCorrectChoices(){
+    public int retrieveNumberOfCorrectChoices() {
         return this.correctChoises.size();
     }
 
@@ -113,9 +112,6 @@ return(( this.selectedChoices.containsAll(this.correctChoises))&&(this.correctCh
         return correction;
     }
 
-    public void setCorrection(String correction) {
-        this.correction = correction;
-    }
 }
 
 
