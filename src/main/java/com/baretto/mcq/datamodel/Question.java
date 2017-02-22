@@ -24,6 +24,11 @@ public final class Question implements  Serializable {
     private AnswerConstraint answerConstraint;
 
 
+
+
+    private  String correction = "ceci est un test de correction";
+
+
     Question(){
 
     }
@@ -103,4 +108,14 @@ return(( this.selectedChoices.containsAll(this.correctChoises))&&(this.correctCh
     public int retrieveNumberOfCorrectChoices(){
         return this.correctChoises.size();
     }
+
+    public String getCorrection() {
+        return correction;
+    }
+
+    public void setCorrection(String correction) {
+        this.correction = correction;
+    }
 }
+
+
