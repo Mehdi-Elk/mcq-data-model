@@ -23,15 +23,13 @@ public class MCQ implements Serializable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MCQ.class);
 
-    public MCQ(String json, int numberOfQuestions) {
-        try {
+    public MCQ(String json, int numberOfQuestions) throws IOException {
+
             List<Question> allQuestions = extractQuestionsFromJson(json);
             Collections.shuffle(allQuestions);
             questions.addAll(allQuestions.subList(0, numberOfQuestions));
             shuffleChoices();
-        } catch (IOException e) {
-            LOGGER.error("Error during question extraction from json", e);
-        }
+
     }
 
     /**
