@@ -3,6 +3,7 @@ package com.baretto.mcq.datamodel;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,20 +19,20 @@ public class MCQTest {
     public static final String QUESTION_WITH_CORRECTION = "[{\"label\":\"Which of the fo||owing are ro|es on a Scrum Team?\",\"choices\":[{\"label\":\"Product Owner\"},{\"label\":\"Scrum Master\"},{\"label\":\"Users\"},{\"label\":\"Customers\"},{\"label\":\"Development Team\"}],\"selectedChoices\":[],\"correction\":\"It is a correction\",\"answerConstraint\":\"ALL_THAT_APPLY\"}]";
 
     @Test
-    public void testGenerateMCQFromJson() {
+    public void testGenerateMCQFromJson() throws IOException {
         MCQ mcq = new MCQ(JSON, 2);
         Assert.assertEquals(2, mcq.getQuestions().size());
     }
 
 
     @Test
-    public void testGenerateMCQFromJsonWithNumberOgQuestions() {
+    public void testGenerateMCQFromJsonWithNumberOgQuestions() throws IOException {
         MCQ mcq = new MCQ(JSON, 1);
         Assert.assertEquals(1, mcq.getQuestions().size());
     }
 
     @Test
-    public void testShuffleChoiceDuringMCQGeneration() {
+    public void testShuffleChoiceDuringMCQGeneration() throws IOException {
         MCQ mcq = new MCQ("[" + QUESTION_1 + "]", 1);
 
         List<Choice> choices = mcq.getQuestions().get(0).getChoices();
@@ -46,7 +47,7 @@ public class MCQTest {
     }
 
     @Test
-    public void testShuffleChoicesWithAllOfTheAbove() {
+    public void testShuffleChoicesWithAllOfTheAbove() throws IOException {
         String json = "[{\n  \"label\": \"Which Scrum Value is affected by a lack of trust in the Scrum Team?\",\n   \"choices\": [\n     {\n        \"label\": \"Commitment\"\n     },\n    {\n  \"label\": \"Courage\"\n     },\n  {\n  \"label\": \"Openness\"\n   },\n   {\n     \"label\": \"Focus\"\n   },\n    {\n \"label\": \"Respect\"\n},\n {\n\"label\": \"All of the above\"\n}\n ],\n  \"correctChoises\": [\n {\n   \"label\": \"All of the above\"\n     }\n    ],\n    \"selectedChoices\": [],\n    \"answerConstraint\": \"ONE_RESPONSE\"\n }]";
 
         MCQ mcq = new MCQ(json, 1);
@@ -58,7 +59,7 @@ public class MCQTest {
     }
 
     @Test
-    public void testChoicesShouldNotBeShuffleForTrueOrFalse() {
+    public void testChoicesShouldNotBeShuffleForTrueOrFalse() throws IOException {
         MCQ mcq = new MCQ(TRUE_FALSE_QUESTION, 1);
         Question question = mcq.getQuestions().get(0);
         List<Choice> choices = question.getChoices();
@@ -68,7 +69,7 @@ public class MCQTest {
 
 
     @Test
-    public void testRetrieveCorrection() {
+    public void testRetrieveCorrection() throws IOException {
         MCQ mcq = new MCQ(QUESTION_WITH_CORRECTION, 1);
         Question question = mcq.getQuestions().get(0);
 
