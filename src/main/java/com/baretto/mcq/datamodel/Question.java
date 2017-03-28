@@ -12,6 +12,8 @@ import java.util.List;
  * Created by mehdi on 07/01/17.
  */
 public final class Question implements Serializable {
+    private static String ABOVE = "above";
+
     @JsonProperty
     private final List<Choice> choices = new ArrayList();
     @JsonProperty
@@ -112,6 +114,19 @@ public final class Question implements Serializable {
         return correction;
     }
 
+    /***
+     * Shuffle choices, if a choice contains "All of the above", is always the last.
+     */
+    public void shuffleChoices() {
+        List<Choice> choicesToShuffle = getChoices();
+        if(choicesToShuffle.size()>2){
+            int lastIndex = choicesToShuffle.size();
+            if (choicesToShuffle.get(lastIndex-1).getLabel().contains(ABOVE)) {
+                choicesToShuffle = choicesToShuffle.subList(0, lastIndex);
+            }
+            Collections.shuffle(choicesToShuffle);
+        }
+    }
 }
 
 

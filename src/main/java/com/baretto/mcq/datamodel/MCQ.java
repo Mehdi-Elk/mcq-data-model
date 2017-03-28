@@ -17,8 +17,6 @@ import java.util.*;
  */
 public class MCQ implements Serializable {
 
-    private static String ALL_OF_THE_ABOVE = "All of the above";
-
     private List<Question> questions = new ArrayList();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MCQ.class);
@@ -37,14 +35,7 @@ public class MCQ implements Serializable {
      */
     private void shuffleChoices() {
         for (Question question : questions) {
-            List<Choice> choicesToShuffle = question.getChoices();
-            if(choicesToShuffle.size()>2){
-                int lastIndex = choicesToShuffle.size() - 1;
-                if (ALL_OF_THE_ABOVE.equals(choicesToShuffle.get(lastIndex).getLabel())) {
-                    choicesToShuffle = choicesToShuffle.subList(0, lastIndex);
-                }
-                Collections.shuffle(choicesToShuffle);
-            }
+            question.shuffleChoices();
         }
     }
 

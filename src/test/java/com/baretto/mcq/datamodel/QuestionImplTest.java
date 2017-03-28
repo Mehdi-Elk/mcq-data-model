@@ -1,9 +1,6 @@
 package com.baretto.mcq.datamodel;
 
-import com.baretto.mcq.datamodel.AnswerConstraint;
-import com.baretto.mcq.datamodel.Choice;
-import com.baretto.mcq.datamodel.Question;
-import com.baretto.mcq.datamodel.Question;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -77,6 +74,28 @@ public class QuestionImplTest {
 
         Assert.assertTrue(question.answerIsCorrect());
 
+
+    }
+
+    @Test
+    public void testShuffleChoices(){
+        String allOfTheAbove = "All of the above";
+        Choice choiceA = new Choice("response A");
+        Choice choiceB = new Choice(allOfTheAbove);
+        Choice choiceC = new Choice("response C");
+        Choice choiceD = new Choice("response D");
+        List<Choice> choices = new ArrayList<Choice>();
+        choices.add(choiceA);
+        choices.add(choiceB);
+        choices.add(choiceC);
+        choices.add(choiceD);
+
+        Question question = new Question("The question",choices,new ArrayList<Choice>(),AnswerConstraint.ONE_RESPONSE);
+
+        question.shuffleChoices();
+
+        Choice lastChoice = question.getChoices().get(3);
+        Assert.assertEquals(allOfTheAbove, lastChoice.getLabel());
 
     }
 
