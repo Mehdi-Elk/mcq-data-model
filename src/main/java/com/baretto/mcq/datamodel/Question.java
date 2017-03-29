@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Simple implementation of question for MCQ.
@@ -118,14 +122,18 @@ public final class Question implements Serializable {
      * Shuffle choices, if a choice contains "All of the above", is always the last.
      */
     public void shuffleChoices() {
-        List<Choice> choicesToShuffle = getChoices();
-        if(choicesToShuffle.size()>2){
-            int lastIndex = choicesToShuffle.size();
-            if (choicesToShuffle.get(lastIndex-1).getLabel().contains(ABOVE)) {
-                choicesToShuffle = choicesToShuffle.subList(0, lastIndex);
+        Collections.sort(choices,new Comparator<Choice>() {
+            @Override
+            public int compare(Choice choice1, Choice choice2) {
+                if(choice1.getLabel().contains(ABOVE)){
+                    return 1;
+                }else if(choice2.getLabel().contains(ABOVE)){
+                    return -1;
+                }
+                return ThreadLocalRandom.current().nextInt(-10, 10);
             }
-            Collections.shuffle(choicesToShuffle);
-        }
+        });
+        System.err.println("here");
     }
 }
 
