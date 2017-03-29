@@ -133,7 +133,6 @@ public final class Question implements Serializable {
                 return ThreadLocalRandom.current().nextInt(-10, 10);
             }
         });
-        System.err.println("here");
     }
 }
 
