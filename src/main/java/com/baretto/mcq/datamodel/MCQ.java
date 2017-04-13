@@ -6,6 +6,7 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
@@ -21,12 +22,29 @@ public class MCQ implements Serializable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MCQ.class);
 
+    MCQ(List<Question> questions){
+        this.questions = questions;
+        Collections.shuffle(this.questions);
+        shuffleChoices();
+    }
+    /**
+     * Genereate an MCQ from json.
+     * @param json
+     * @param numberOfQuestions
+     * @throws IOException
+     */
     public MCQ(String json, int numberOfQuestions) throws IOException {
-
             List<Question> allQuestions = extractQuestionsFromJson(json);
             Collections.shuffle(allQuestions);
             questions.addAll(allQuestions.subList(0, numberOfQuestions));
             shuffleChoices();
+    }
+
+    /**
+     * Generate an MCQ from xlsx file.
+     * @param xlsx
+     */
+    public MCQ(File xlsx) {
 
     }
 
