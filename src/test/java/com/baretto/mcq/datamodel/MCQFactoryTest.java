@@ -1,5 +1,6 @@
 package com.baretto.mcq.datamodel;
 
+import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,7 +19,8 @@ public class MCQFactoryTest {
 
 
         MCQ mcq = MCQFactory.generateFromXlsx(new File(excelFilePath));
-
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(mcq.getQuestions()));
 
         Assert.assertEquals(1, mcq.getQuestions().size());
         Assert.assertEquals(AnswerConstraint.N_RESPONSES, mcq.getQuestions().get(0).getAnswerConstraint());

@@ -108,8 +108,10 @@ public class MCQFactory {
                 if (theChoices.size() > 1) {
                     String cellValue = cell.getStringCellValue();
                     cellValue = cellValue.replace(",", "");
-                    if (cellValue.length() >= 1) {
+                    if (cellValue.length() > 1) {
                         anAnswerConstraint = AnswerConstraint.N_RESPONSES;
+                    }else if(cellValue.length() == 1){
+                        anAnswerConstraint = AnswerConstraint.ONE_RESPONSE;
                     }
                     for (Character character : cellValue.toCharArray()) {
                         final Integer index = INDEX_CONVERTER.get(character);
